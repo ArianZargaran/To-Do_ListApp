@@ -1,0 +1,54 @@
+.td-list_container {
+  color: #000;
+  display: inline-block;
+  height: 500px;
+  width: 350px;
+  background: #fff;
+  margin: 1px;
+  border-radius: 5%;
+  padding-top: 2px;
+}
+
+.td-list_name {
+  text-decoration: underline;
+}
+
+.td-list_task {
+  text-decoration: none;
+  font-family: Arial;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.td-remove_task {
+  background-color: tomato;
+}
+
+.td-list_add_task_box {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  padding: 20px 0;
+  margin: 0;
+  border-top: 1px solid #c3c3c3;
+}
+
+.td-list_add_cta {
+  position: relative;
+  margin-left: 5px;
+  padding: 2.5px;
+  border-radius: 10%;
+  outline: none;
+}
+
+.td-list_add_cta:active{
+  background: var(--backgroundBlue)
+}
+
+.td-list_add_field {
+  padding: 2.5px;
+  border-radius: 10%;
+  border: 1px solid #c3c3c3;
+  outline-color: var(--backgroundBlue);
+}
