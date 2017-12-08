@@ -2,14 +2,19 @@
   color: #000;
   display: inline-block;
   height: 500px;
-  width: 350px;
+  width: 325px;
   background: #fff;
-  margin: 1px;
+  margin: 1.5px;
   border-radius: 5%;
   padding-top: 2px;
+  overflow: hidden;
+  border: 1px solid #c3c3c3;
 }
 
 .td-list_name {
+  background-color: #c3c3c3;
+  margin: 0;
+  padding: 5px 0;
   text-decoration: underline;
 }
 
@@ -25,17 +30,12 @@
 }
 
 .td-list_add_task_box {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0;
-  padding: 20px 0;
-  margin: 0;
-  border-top: 1px solid #c3c3c3;
+  background-color: #c3c3c3;
+  padding-bottom: 10px;
+  height: 50px;
 }
 
 .td-list_add_cta {
-  position: relative;
   margin-left: 5px;
   padding: 2.5px;
   border-radius: 10%;
