@@ -19,8 +19,6 @@ export class List extends React.Component {
           className ="td-list_add_cta">Add new task</button>
       </div>
 
-
-
       {this.state.tasks.map((task, idx) => (
       <div key={idx}>
         <p className="td-list_task">&nbsp;<input type="checkbox" />{task.text}&nbsp;<button className="td-remove_task" onClick={this.removeTask.bind(this)}>x</button></p>
