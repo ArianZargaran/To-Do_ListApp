@@ -9,7 +9,7 @@ export class Header extends Component {
     return (
       <nav className= "td-encouraging_message">
         <h1>GET IT DONE!</h1>         
-        <div>
+        <div className= "td-lists_container">
           <List name="Lunes"/>
           <List name="Martes"/>
           <List name="Miércoles"/>

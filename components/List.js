@@ -19,19 +19,21 @@ export class List extends React.Component {
           className ="td-list_add_cta">Add new task</button>
       </div>
 
-      {this.state.tasks.map((task, idx) => (
-      <div key={idx}>
-        <p className="td-list_task">&nbsp;<input type="checkbox" />{task.text}&nbsp;<button className="td-remove_task" onClick={this.removeTask.bind(this)}>x</button></p>
-      </div>
-      ))}  
-
-
+      <div className ="td-task_box">
+        {this.state.tasks.map((task, idx) => (
+        <div key={idx} className="td-task-wrapper">  
+            <input type="checkbox" id="check" ckecked/>
+            <label for="check" className="td-list_task">{task.text}</label>
+            <button className="td-remove_task" onClick={this.removeTask.bind(this, {idx})}>x</button>
+        </div> 
+      ))}
+      </div> 
     </div>            
   )};
 
   state = {
     tasks: [],
-    inputValue: ""
+    inputValue: " ",
   };
 
   onChange(event){
@@ -42,17 +44,24 @@ export class List extends React.Component {
 
   onButtonClick(){
     const newArr = this.state.tasks.slice(0);
-    newArr.length < 12 ? newArr.push({text: this.state.inputValue}) : alert("Try to accomplish your actual tasks instead of creating a new one");
+    newArr.length < 10 ? newArr.push({text: this.state.inputValue}) : alert("Try to accomplish your actual tasks instead of creating a new one");
     
     this.setState({
       tasks: newArr,
-      inputValue: ""
+      inputValue: "",
     });
   };
 
-  removeTask(element){
+  removeTask(arrIdx){
+    const newArr = this.state.tasks.splice(0);
+    
+    if (arrIdx.idx > -1) {
+      newArr.splice(arrIdx.idx, 1);
+    }
+
+
     this.setState({
-      tasks: []
+      tasks: newArr,
     });
   }
 }

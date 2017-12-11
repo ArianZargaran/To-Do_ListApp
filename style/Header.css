@@ -1,6 +1,14 @@
 .td-encouraging_message {
-  color: #D84060;
+  color: #fff;
   text-align: center;
   font-size: 50px;
   overflow: hidden;
+  padding: 30px 0;
+}
+
+.td-lists_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
