@@ -20,9 +20,9 @@ export class List extends React.Component {
       </div>
 
       <div className ="td-task_box">
-        {this.state.tasks.map((task, idx) => (
+        {this.state.tasks.map((task, idx, lista) => (
         <div key={idx} className="td-task-wrapper">  
-            <input type="checkbox" id="check" value={task.text} onChange={this.onInputChange.bind(this)}/>
+            <input type="checkbox" id="check" value={task.text} onChange={this.onInputChange.bind(this, {idx}, {task}, {lista})}/>
             <label for="check" className="td-list_task">{task.text}</label>
             <button className="td-remove_task" onClick={this.removeTask.bind(this, {idx})}>x</button>
         </div> 
@@ -37,14 +37,18 @@ export class List extends React.Component {
     status: []
   };
 
-  onInputChange(obj, array){
+  onInputChange(obj, indice, tarea, lista){
     const newArr = this.state.tasks.slice(0);
     const statusArr = this.state.status;
 
     
-    newArr.map((task, checked) => (statusArr.push(obj.target.checked)))
-    console.log(statusArr)
-    console.log(newArr)
+  // newArr.map((task) => (statusArr.push(obj.target.checked)))
+    console.dir(obj)
+    console.dir(newArr)
+    console.dir(indice)
+    console.dir(tarea)
+    console.dir(lista)
+
     this.setState({
       status: [],
     });
