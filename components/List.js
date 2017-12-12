@@ -3,82 +3,78 @@ import React from "react";
 import '../style/List.css';
 
 export class List extends React.Component {
-  render(){
+  render() {
     return (
-    <div className="td-list_container">    
-      <h5 className="td-list_name">{this.props.name}</h5>
+      <div className="td-list_container">
+        <h5 className="td-list_name">{this.props.name}</h5>
 
-      <div className ="td-list_add_task_box">
-        <input 
-          type="text" 
-          className ="td-list_add_field" 
-          value={this.state.inputValue} 
-          onChange={this.onChange.bind(this)}
-        />
-        <button onClick={this.onButtonClick.bind(this)}
-          className ="td-list_add_cta">Add new task</button>
+        <div className="td-list_add_task_box">
+          <input
+            type="text"
+            className="td-list_add_field"
+            value={this.state.inputValue}
+            onChange={this.onChange.bind(this)}
+          />
+          <button onClick={this.onButtonClick.bind(this)}
+            className="td-list_add_cta">Add new task</button>
+        </div>
+
+        <div className="td-task_box">
+          {this.state.tasks.map((task, idx) => (
+            <div key={idx} className="td-task-wrapper">
+              <input type="checkbox" id="check" value={task.text} checked={task.status} onChange={this.onInputChange.bind(this, task, idx, this.state.tasks)} />
+              <label for="check" className="td-list_task">{task.text}</label>
+              <button className="td-remove_task" onClick={this.removeTask.bind(this, {idx})}>x</button>
+            </div>
+          ))}
+        </div>
       </div>
-
-      <div className ="td-task_box">
-        {this.state.tasks.map((task, idx, lista) => (
-        <div key={idx} className="td-task-wrapper">  
-            <input type="checkbox" id="check" value={task.text} onChange={this.onInputChange.bind(this, {idx}, {task}, {lista})}/>
-            <label for="check" className="td-list_task">{task.text}</label>
-            <button className="td-remove_task" onClick={this.removeTask.bind(this, {idx})}>x</button>
-        </div> 
-      ))}
-      </div> 
-    </div>            
-  )};
+    )
+  };
 
   state = {
     tasks: [],
     inputValue: "",
-    status: []
+    status: false
   };
 
-  onInputChange(obj, indice, tarea, lista){
-    const newArr = this.state.tasks.slice(0);
-    const statusArr = this.state.status;
+  onInputChange(tarea, indice, tareas) {
+        
+    console.dir(tarea.status)
 
+    if(tarea.status){tarea.status = false} else {tarea.status = true}
     
-  // newArr.map((task) => (statusArr.push(obj.target.checked)))
-    console.dir(obj)
-    console.dir(newArr)
-    console.dir(indice)
-    console.dir(tarea)
-    console.dir(lista)
-
     this.setState({
-      status: [],
+      status: tareas,
     });
   }
 
 
-  onChange(event){
+  onChange(event) {
     this.setState({
       inputValue: event.target.value
     });
   }
 
-  onButtonClick(){
+  onButtonClick() {
     const newArr = this.state.tasks.slice(0);
-    newArr.length < 10 ? newArr.push({text: this.state.inputValue, status: this.state.status}) : alert("Try to accomplish your actual tasks instead of creating a new one");
-    
+    newArr.length < 10 ? newArr.push({ text: this.state.inputValue, status: false }) : alert("Try to accomplish your actual tasks instead of creating a new one");
+
     this.setState({
       tasks: newArr,
       inputValue: "",
     });
   };
 
-  removeTask(arrIdx){
+  removeTask(arrIdx) {
     const newArr = this.state.tasks.splice(0);
-    
+
     if (arrIdx.idx > -1) {
       newArr.splice(arrIdx.idx, 1);
     }
     this.setState({
-      tasks: newArr,  
+      tasks: newArr,
+      status: newArr.status
     });
   }
 }
