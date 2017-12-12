@@ -1,33 +1,39 @@
 .td-list_container {
-  color: #000;
   display: flex;
   flex-direction: column;
   flex-basis: 300px;
   height: 500px;
-  min-width: 250px;
-  max-width: 300px;
-  background: #fff;
+  min-width: 230px;
   margin: 30px 0;
-  border-radius: 5%;
-  padding-top: 2px;
   overflow: hidden;
-  border: 2px solid #c3c3c3;
+  background: -webkit-linear-gradient(top, #aaa, #fff 2%);
+  background: -moz-linear-gradient(top, #aaa, #fff 2%);
+  background: -o-linear-gradient(top, #aaa, #fff 2%);
+  background: -ms-linear-gradient(top, #aaa, #fff 2%);
+  background: linear-gradient(top, #aaa, #fff 2%);
+  -webkit-background-size: 100% 40px;
+  -moz-background-size: 100% 40px;
+  background-size: 100% 40px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 3px 0 rgba(255, 255, 255, 1),
+    0 4px 0 rgba(0, 0, 0, 0.15), 0 6px 0 rgba(255, 255, 255, 1);
+  font-size: 14px;
+  padding: 40px 32px 20px;
+  max-width: 240px;
 }
 
 .td-list_name {
-  background-color: #c3c3c3;
-  margin: 0;
-  letter-spacing: -2px;
-  padding: 5px 0;
-  text-decoration: underline;
+  color: #5e5e5e;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .td-list_task {
   text-decoration: none;
   font-family: Arial;
   text-decoration: none;
-  font-size: 12px;
-  padding: 6px 0;
+  font-size: 14px;
+  padding: 10px 0;
 }
 
 .td-list_add_field {
@@ -39,8 +45,7 @@
 }
 
 .td-list_add_task_box {
-  background-color: #c3c3c3;
-  padding-bottom: 10px;
+  margin-top: 20px;
   height: 50px;
 }
 
@@ -56,11 +61,12 @@
 }
 
 .td-task_box {
+  margin-top: -5px;
   height: 100%;
 }
 
 .td-task-wrapper {
-  padding: 5px;
+  height: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -73,48 +79,50 @@
   background-color: tomato;
 }
 
-input[type=checkbox] {
-	cursor: pointer;
-	position: relative;
+input[type="checkbox"] {
+  cursor: pointer;
+  position: relative;
+  top: 3px;
   visibility: hidden;
-  margin-left: 5px; 
+  margin-left: 5px;
 }
 
-input[type=checkbox]:after {
-	border: 1px solid #166B94;
-	border-radius: 3px;
-	color: #fff;
-	content: "";
-	display: block;
-	height: 16px;
-	line-height: 16px;
-	text-align: center;
-	visibility: visible;
-	width: 16px;
+input[type="checkbox"]:after {
+  border: 1px solid #166b94;
+  border-radius: 3px;
+  color: #fff;
+  content: "";
+  display: block;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  visibility: visible;
+  width: 16px;
 }
 
-input[type=checkbox]:checked:after {
-	border: 1px solid #979797;
-	color: #979797;
-	content: "✓";
+input[type="checkbox"]:checked:after {
+  border: 1px solid #979797;
+  color: #979797;
+  content: "✓";
 }
 
-input[type=checkbox]:checked + label {
-	color: #979797;
-	font-weight: normal;
-	text-decoration: line-through;
+input[type="checkbox"]:checked + label {
+  color: #979797;
+  font-weight: normal;
+  text-decoration: line-through;
+  vertical-align: bottom-text;
 }
 
-input[type=checkbox] + label + button {
+input[type="checkbox"] + label + button {
   margin-right: 5px;
-  }
+}
 
-  input[type=checkbox]:checked + label + button {
-    background: #979797;
-    }
+input[type="checkbox"]:checked + label + button {
+  background: #979797;
+}
 
 label {
-	color: #166B94;
-	font-weight: bold;
-	margin-left: 12px;
+  color: #166b94;
+  font-weight: bold;
+  margin-left: 12px;
 }
