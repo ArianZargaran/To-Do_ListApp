@@ -39,9 +39,6 @@ export class List extends React.Component {
   };
 
   onInputChange(tarea, indice, tareas) {
-        
-    console.dir(tarea.status)
-
     if(tarea.status){tarea.status = false} else {tarea.status = true}
     
     this.setState({
@@ -78,6 +75,12 @@ export class List extends React.Component {
     });
   }
 }
+
+//<Tarea checked={true} texto="Nueva tarea"
+// onCheckClick={(event, currentValue)=>{console.log(event, currentValue)}}
+// onButtonClick={(event) => { console.log(event)}}
+// onTextClick={(event, text) => { console.log(event, text)}}
+// />
 
 
 export default List

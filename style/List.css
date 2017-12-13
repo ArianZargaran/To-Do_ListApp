@@ -6,16 +6,12 @@
   min-width: 230px;
   margin: 30px 0;
   overflow: hidden;
-  background: -webkit-linear-gradient(top, #aaa, #fff 2%);
-  background: -moz-linear-gradient(top, #aaa, #fff 2%);
-  background: -o-linear-gradient(top, #aaa, #fff 2%);
-  background: -ms-linear-gradient(top, #aaa, #fff 2%);
-  background: linear-gradient(top, #aaa, #fff 2%);
+  background: linear-gradient(to top, #aaa, #fff 2%);
   -webkit-background-size: 100% 40px;
   -moz-background-size: 100% 40px;
   background-size: 100% 40px;
   border-radius: 5px;
-  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 3px 0 rgba(255, 255, 255, 1),
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 3px 0 rgba(255, 255, 255, 1),
     0 4px 0 rgba(0, 0, 0, 0.15), 0 6px 0 rgba(255, 255, 255, 1);
   font-size: 14px;
   padding: 40px 32px 20px;
