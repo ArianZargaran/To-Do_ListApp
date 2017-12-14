@@ -1,12 +1,23 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
-import {Header} from "./components/Header";
+import Header from './Header';
+import List from './List';
 
-class App extends Component {
-  render() {
-    return (
-       <Header />
-    )};
+import '/style/App.css';
+
+
+export default class App extends Component {
+  render(){
+    return(
+      <div>
+        <Header click={(event, value, elClass) => (console.log(event, value, elClass))}>GO FOR IT!</Header>
+        <section className="tdl-main-section">
+          <List name="Monday"/>
+          <List name="Tuesday" />
+          <List name="Wednesday" />
+          <List name="Thursday" />
+          <List name="Friday" />
+        </section>
+      </div>   
+  )};
 }
-
-export default App;
