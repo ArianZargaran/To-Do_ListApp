@@ -1,17 +1,25 @@
 import React, {Component} from 'react';
 
-export default class Tarea extends Component {
+export default class Task extends Component {
   render(){
-    return (
-      <div >
-      <input type="checkbox" checked={this.props.input} onChange={this.theChange.bind(this)} />
-      <p onClick={this.textClick.bind(this)}>{this.props.texto}</p>
-      <button onClick={this.props.onButtonClick}>x</button>
-      </div >
-    )}
-  theChange(ev){
-    this.props.onCheckClick(ev, ev.target.checked)}
 
-  textClick(ev){
-    this.props.onTextClick(ev, this.props.texto)}
-}
+    const {
+      removeTask = () => {},
+      key,
+      children,
+      value,
+      onInpChange,
+      className = "thisEl Class",
+      checked, 
+      } = this.props;
+
+    
+    return (
+      <div key={key} className="td-task-wrapper">
+        <input type="checkbox" id="check" value={value} checked={checked} onChange={onInpChange} />
+        <label for="check" className="td-list_task">{children}</label>
+        <button onClick={(event) => removeTask(event, children, className)} className="td-remove_task">x</button>  
+      </div>    
+    )
+  }
+};
