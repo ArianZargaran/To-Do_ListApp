@@ -14,9 +14,16 @@ export default class List extends Component {
       placeholder = `New task on ${name}`,
     } = this.props;
 
-    const divStyle = {
+    const percentageFeature = {
+      opacity: (this.state.tasks.length),
+      transition: 'opacity .5s',
+      WebkitTransition: 'opacity .5s',
+      msTransition: 'opacity .5s'
+    }
+
+    const percentageBar = {
       width: `${this.state.percentage}%`,
-      transition: 'width 2s',
+      transition: 'width .5s',
       WebkitTransition: 'width .5s',
       msTransition: 'width .5s'
     };
@@ -43,9 +50,9 @@ export default class List extends Component {
           {this.state.tasks.map((task, idx, tasks) => (<Task checked={task.status} key={idx} onInpChange={this.onInputChange.bind(this, task, {idx},tasks)} removeTask={this.removeThisTask.bind(this, {idx}.idx)}>{task.text}</Task>))}
         </div>
 
-        <div className="td-list_info">
+        <div className="td-list_info" style={percentageFeature}>
           <p>{`${this.state.percentage}% tasks completed`}</p>
-          <div className='td-list_info_bar' style={divStyle}></div>
+          <div className='td-list_info_bar' style={percentageBar}></div>
         </div> 
     </div>
   )};
@@ -53,7 +60,7 @@ export default class List extends Component {
   state = {
     tasks: [],
     inputValue: '',
-    percentage: 100,
+    percentage: 0,
   };
 
   onChange(event){
@@ -69,7 +76,6 @@ export default class List extends Component {
     if(this.state.inputValue) {
       newArr.length < 10 ? newArr.push({ text: this.state.inputValue, status: false }) : alert("Try to accomplish your actual tasks instead of creating a new one");
     }
-
     this.calcPercentage.call(this, newArr)
 
     this.setState({
@@ -108,11 +114,9 @@ export default class List extends Component {
     for(var i = 0; i < arr.length; i++) {if(arr[i].status){counter++}}
 
     let calculatePercentage = (counter/arr.length * 100).toFixed()
-    if (!arr.length) { calculatePercentage = 100 }
+    if (!arr.length) { calculatePercentage = 0 }
     this.setState({
       percentage: calculatePercentage 
     });
   };
-
-
 };
