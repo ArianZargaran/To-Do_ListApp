@@ -14,6 +14,13 @@ export default class List extends Component {
       placeholder = `New task on ${name}`,
     } = this.props;
 
+    const divStyle = {
+      width: `${this.state.percentage}%`,
+      transition: 'width 2s',
+      WebkitTransition: 'width .5s',
+      msTransition: 'width .5s'
+    };
+
     return (
       <div className="td-list_container">
         <h5 className="td-list_name">{name}</h5>
@@ -23,7 +30,7 @@ export default class List extends Component {
             type="text"
             className="td-list_add_field"
             value={this.state.inputValue}
-            onChange= {this.onChange.bind(this)}
+            onChange={this.onChange.bind(this)}
             placeholder= {placeholder}
             onKeyUp={(e) => {if(e.keyCode === 13){this.onButtonClick.call(this)}}}
           />
@@ -34,15 +41,19 @@ export default class List extends Component {
 
         <div className="td-task-box">
           {this.state.tasks.map((task, idx, tasks) => (<Task checked={task.status} key={idx} onInpChange={this.onInputChange.bind(this, task, {idx},tasks)} removeTask={this.removeThisTask.bind(this, {idx}.idx)}>{task.text}</Task>))}
+        </div>
+
+        <div className="td-list_info">
+          <p>{`${this.state.percentage}% tasks completed`}</p>
+          <div className='td-list_info_bar' style={divStyle}></div>
         </div> 
     </div>
   )};
-  
-
 
   state = {
     tasks: [],
     inputValue: '',
+    percentage: 100,
   };
 
   onChange(event){
@@ -59,6 +70,8 @@ export default class List extends Component {
       newArr.length < 10 ? newArr.push({ text: this.state.inputValue, status: false }) : alert("Try to accomplish your actual tasks instead of creating a new one");
     }
 
+    this.calcPercentage.call(this, newArr)
+
     this.setState({
       tasks: newArr,
       inputValue: "",
@@ -67,11 +80,12 @@ export default class List extends Component {
 
 
   onInputChange(tarea, indice, tareas) {
-    console.log(tarea.for)
     if (tarea.status) { tarea.status = false } else { tarea.status = true }
 
+    this.calcPercentage.call(this, tareas)
+
     this.setState({
-      tasks: tareas,
+      tasks: tareas,   
     });
   }
 
@@ -82,9 +96,23 @@ export default class List extends Component {
     if (arrIdx > -1) {
       newArr.splice(arrIdx, 1);
     }
+    this.calcPercentage.call(this, newArr)
 
     this.setState({
-      tasks: newArr,
+      tasks: newArr,    
     });
   }
+
+  calcPercentage(arr) {
+    let counter = 0;
+    for(var i = 0; i < arr.length; i++) {if(arr[i].status){counter++}}
+
+    let calculatePercentage = (counter/arr.length * 100).toFixed()
+    if (!arr.length) { calculatePercentage = 100 }
+    this.setState({
+      percentage: calculatePercentage 
+    });
+  };
+
+
 };
