@@ -1,0 +1,9 @@
+.tdl-main-section {
+  margin: 0 auto;
+  text-align: center;
+  background: var(--backgroundBlue);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

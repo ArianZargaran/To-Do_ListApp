@@ -25,13 +25,15 @@ export default class List extends Component {
             value={this.state.inputValue}
             onChange= {this.onChange.bind(this)}
             placeholder= {placeholder}
+            onKeyUp={(e) => {if(e.keyCode === 13){this.onButtonClick.call(this)}}}
           />
-          <button onClick={this.onButtonClick.bind(this)}
+          <button 
+            onClick={this.onButtonClick.bind(this)}
             className="td-list_add_cta">Add new task</button>
         </div>
 
         <div className="td-task-box">
-          {this.state.tasks.map((task, idx, tasks) => (<Task key={idx} onInpChange={this.onInputChange.bind(this, task, {idx},tasks)} removeTask={this.removeThisTask.bind(this, {idx}.idx, )}>{task.text}</Task>))}
+          {this.state.tasks.map((task, idx, tasks) => (<Task checked={task.status} key={idx} onInpChange={this.onInputChange.bind(this, task, {idx},tasks)} removeTask={this.removeThisTask.bind(this, {idx}.idx)}>{task.text}</Task>))}
         </div> 
     </div>
   )};
@@ -41,9 +43,7 @@ export default class List extends Component {
   state = {
     tasks: [],
     inputValue: '',
-    status: "",
   };
-
 
   onChange(event){
     this.setState({
@@ -54,9 +54,10 @@ export default class List extends Component {
 
   onButtonClick() {
     const newArr = this.state.tasks.slice(0);
-    newArr.length < 10 ? newArr.push({ text: this.state.inputValue, status: false }) : alert("Try to accomplish your actual tasks instead of creating a new one");
 
-    console.log(newArr);
+    if(this.state.inputValue) {
+      newArr.length < 10 ? newArr.push({ text: this.state.inputValue, status: false }) : alert("Try to accomplish your actual tasks instead of creating a new one");
+    }
 
     this.setState({
       tasks: newArr,
@@ -65,10 +66,18 @@ export default class List extends Component {
   };
 
 
+  onInputChange(tarea, indice, tareas) {
+    console.log(tarea.for)
+    if (tarea.status) { tarea.status = false } else { tarea.status = true }
+
+    this.setState({
+      tasks: tareas,
+    });
+  }
+
+
   removeThisTask(arrIdx) {
     const newArr = this.state.tasks.splice(0);
-
-    console.log(newArr[arrIdx])
 
     if (arrIdx > -1) {
       newArr.splice(arrIdx, 1);
@@ -76,15 +85,6 @@ export default class List extends Component {
 
     this.setState({
       tasks: newArr,
-      status: newArr[arrIdx],
-    });
-  }
-
-  onInputChange(tarea, indice, tareas) {
-    if (tarea.status) { tarea.status = false } else { tarea.status = true }
-
-    this.setState({
-      status: tareas,
     });
   }
 };

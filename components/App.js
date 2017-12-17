@@ -3,14 +3,14 @@ import React, {Component} from 'react';
 import Header from './Header';
 import List from './List';
 
-import '/style/App.css';
+import '../style/App.css';
 
 
 export default class App extends Component {
   render(){
     return(
       <div>
-        <Header click={(event, value, elClass) => (console.log(event, value, elClass))}>GO FOR IT!</Header>
+        <Header click={(event, value, elClass) => {}}>GO FOR IT!</Header>
         <section className="tdl-main-section">
           <List name="Monday"/>
           <List name="Tuesday" />

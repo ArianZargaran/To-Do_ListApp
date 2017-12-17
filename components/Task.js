@@ -7,17 +7,16 @@ export default class Task extends Component {
       removeTask = () => {},
       key,
       children,
-      value,
       onInpChange,
-      className = "thisEl Class",
+      className,
       checked, 
       } = this.props;
 
     
     return (
       <div key={key} className="td-task-wrapper">
-        <input type="checkbox" id="check" value={value} checked={checked} onChange={onInpChange} />
-        <label for="check" className="td-list_task">{children}</label>
+        <input type="checkbox" ißd={key} checked={checked} onChange={onInpChange}/>
+        <label onClick={onInpChange} for={key} className="td-list_task">{children}</label>
         <button onClick={(event) => removeTask(event, children, className)} className="td-remove_task">x</button>  
       </div>    
     )

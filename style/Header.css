@@ -1,14 +1,11 @@
-.td-encouraging_message {
-  color: #fff;
+.tdl-main_title {
+  padding: 30px;
   text-align: center;
-  font-size: 50px;
-  overflow: hidden;
-  padding: 30px 0;
+  font-weight: 700;
+  font-size: 35px;
+  color: var(--headerColor);
 }
 
-.td-lists_container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
+.tdl-main_title-link {
+  text-decoration: none;
 }

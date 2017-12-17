@@ -6,6 +6,7 @@
 :root {
 /*colors*/
   --backgroundBlue: #166B94;
+  --headerColor: tomato;
 /*fonts*/  
   --Header: 'PT Mono', monospace;;
 }
