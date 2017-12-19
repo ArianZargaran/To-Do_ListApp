@@ -49,7 +49,7 @@
   border-radius: 10%;
   outline: none;
   background: transparent;
-  border: 1px solid rgb(216, 216, 216)
+  border: 1px solid rgb(216, 216, 216);
 }
 
 .td-list_add_cta:active {

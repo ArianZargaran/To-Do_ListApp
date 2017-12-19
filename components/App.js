@@ -11,8 +11,9 @@ export default class App extends Component {
     return(
       <div>
         <Header click={(event, value, elClass) => {}}>GO FOR IT!</Header>
+        <button onClick={this.createList.bind(this)} className="tdl-add_list_button">Create new list</button>
         <section className="tdl-main-section">
-          {this.state.lists.map((list, idx, lists) => <List key={idx} newListName={this.newListName.bind(this, idx, list, lists)} submitName={this.submitName.bind(this, idx, list, lists)} name={this.state.lists[idx].name} changeListName={this.changeListName.bind(this, idx, list, lists)}/> )}
+          {this.state.lists.map((list, idx, lists) => (<List key={idx} newListName={this.newListName.bind(this, idx, list, lists)} submitName={this.submitName.bind(this, idx, list, lists)} name={this.state.lists[idx].name} changeListName={this.changeListName.bind(this, idx, list, lists)}></List>))}
         </section>
       </div>   
   )};
@@ -22,7 +23,6 @@ export default class App extends Component {
   }
 
   changeListName(index, list, lists, event) {
-
     let newArr = this.state.lists.slice();
     newArr[index].name = "";
 
@@ -33,7 +33,6 @@ export default class App extends Component {
 
   newListName(index, list, lists, event){
     let newArr = this.state.lists.slice();
-
     newArr[index].name = event.target.value;
 
   this.setState({
@@ -44,4 +43,14 @@ export default class App extends Component {
   submitName(index, list, lists, event){
     if(event.keyCode === 13){event.target.blur()}
   }
+
+  createList(event){
+    const newArr = this.state.lists.slice(0);
+    newArr.push({name: "New List"})
+    
+    this.setState({
+        lists: newArr
+      }); 
+  }
+
 }
