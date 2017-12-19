@@ -10,18 +10,21 @@ export default class List extends Component {
   render(){
 
     const {
-      name = 'Your list name',
-      placeholder = `New task on ${name}`,
+      changeListName,
+      newListName,
+      submitName,
+      value = this.props.name,
+      placeholder = `New task on ${value}`,
     } = this.props;
 
-    const percentageFeature = {
+    const percentageFeatureStyle = {
       opacity: (this.state.tasks.length),
       transition: 'opacity .5s',
       WebkitTransition: 'opacity .5s',
       msTransition: 'opacity .5s'
     }
 
-    const percentageBar = {
+    const percentageBarStyle = {
       width: `${this.state.percentage}%`,
       transition: 'width .5s',
       WebkitTransition: 'width .5s',
@@ -30,7 +33,8 @@ export default class List extends Component {
 
     return (
       <div className="td-list_container">
-        <h5 className="td-list_name">{name}</h5>
+
+        <input value={value} className="td-list_name" onKeyUp={(event) => submitName(event)} onChange={(event)=> newListName(event, {value})} onDoubleClick={(event)=> changeListName(event)}/>
 
         <div className="td-list_add_task_box">
           <input
@@ -43,23 +47,23 @@ export default class List extends Component {
           />
           <button 
             onClick={this.onButtonClick.bind(this)}
-            className="td-list_add_cta">Add new task</button>
+            className="td-list_add_cta">Add task</button>
         </div>
 
         <div className="td-task-box">
           {this.state.tasks.map((task, idx, tasks) => (<Task checked={task.status} key={idx} onInpChange={this.onInputChange.bind(this, task, {idx},tasks)} removeTask={this.removeThisTask.bind(this, {idx}.idx)}>{task.text}</Task>))}
         </div>
 
-        <div className="td-list_info" style={percentageFeature}>
+        <div className="td-list_info" style={percentageFeatureStyle}>
           <p>{`${this.state.percentage}% tasks completed`}</p>
-          <div className='td-list_info_bar' style={percentageBar}></div>
+          <div className='td-list_info_bar' style={percentageBarStyle}></div>
         </div> 
     </div>
   )};
 
   state = {
     tasks: [],
-    inputValue: '',
+    inputValue: "",
     percentage: 0,
   };
 
@@ -116,7 +120,7 @@ export default class List extends Component {
     let calculatePercentage = (counter/arr.length * 100).toFixed()
     if (!arr.length) { calculatePercentage = 0 }
     this.setState({
-      percentage: calculatePercentage 
+      percentage: calculatePercentage, 
     });
   };
 };

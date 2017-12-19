@@ -3,7 +3,7 @@
   flex-direction: column;
   height: 500px;
   min-width: 200px;
-  flex-basis: 200px;
+  flex-basis: 210px;
   max-width: 350px;
   margin: 30px 0;
   overflow: hidden;
@@ -12,29 +12,34 @@
   -moz-background-size: 100% 40px;
   background-size: 100% 40px;
   border-radius: 5px;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 3px 0 rgba(255, 255, 255, 1),
-    0 4px 0 rgba(0, 0, 0, 0.15), 0 6px 0 rgba(255, 255, 255, 1);
+  box-shadow: 0 .5px 0 rgba(0, 0, 0, 0.2), 0 3px 0 rgba(255, 255, 255, 1),
+    0 2px 0 rgba(0, 0, 0, 0.15), 0 6px 0 rgba(255, 255, 255, 1);
   font-size: 14px;
-  padding: 40px 32px 0;
-  max-width: 240px;
+  padding: 10px 20px 0;
 }
 
 .td-list_name {
+  text-align: center;
+  font-family: var(--Header);
+  outline: none;
+  border: none;
+  background: transparent;
   color: #5e5e5e;
   font-size: 28px;
   font-weight: bold;
+  width: 100%;
 }
 
 .td-list_add_field {
   padding: 5px;
-  width: 50%;
+  width: 62%;
   border-radius: 5px;
   border: 1px solid #c3c3c3;
   outline-color: var(--backgroundBlue);
 }
 
 .td-list_add_task_box {
-  margin-top: 20px;
+  margin-top: 7px;
   height: 50px;
 }
 
