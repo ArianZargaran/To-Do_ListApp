@@ -2,12 +2,15 @@
   "name": "todo-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://https://arianzargaran.github.io/To-Do_ListApp/",
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.17"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy":"gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
